@@ -21,9 +21,7 @@ The app is written in Python, the GUI is made in PySide6 (QT Designer).
 
 ## Installation
 
-For each new release, we provide builds for Windows, Linux, and Mac. See the [releases page](#).
-
-**Note:** builds for Linux and Mac might need additional testing. Let us know about any errors via the repository.
+For each new release, we will provide builds for Windows, Linux, and Mac. Builds are coming soon!
 
 ## Compatibility
 

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="img">
+    <file>steps.png</file>
+  </qresource>
+</RCC>

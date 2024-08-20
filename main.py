@@ -2,7 +2,6 @@
 import sys
 import time
 
-import pyperclip
 # Import gui libraries and elements
 from PySide6 import QtWidgets, QtGui
 from PySide6.QtGui import QDragEnterEvent, QDropEvent
@@ -10,6 +9,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Qt
 from PySide6.QtWidgets import QLabel, QApplication, QFileDialog, QMessageBox
 from droplabel import DropLabel
+import clipboard
 
 # Import custom .css for styling the GUI
 from style import *
@@ -432,7 +432,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.load_image(self.selected_image)
 
     def copy_code_to_clipboard(self):
-        pyperclip.copy(self.images[self.selected_image].resultString)
+        clipboard.copy(self.images[self.selected_image].resultString)
         self.converting_label.setText("Copied!")
         QApplication.processEvents()
 

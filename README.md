@@ -21,7 +21,7 @@ The app is written in Python, the GUI is made in PySide6 (QT Designer).
 
 ## Installation
 
-For each new release, we will provide builds for Windows, Linux, and Mac. Builds are coming soon!
+Check the [Releases page](https://github.com/SolderedElectronics/Soldered-Image-Converter/releases) for binaries.
 
 ## Compatibility
 

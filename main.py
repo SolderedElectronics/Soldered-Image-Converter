@@ -3,7 +3,7 @@ import sys
 import time
 
 # Import gui libraries and elements
-from PySide6 import QtWidgets, QtGui
+from PySide6 import QtWidgets, QtGui, QtCore
 from PySide6.QtGui import QDragEnterEvent, QDropEvent
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Qt
@@ -22,7 +22,6 @@ from version import *
 from image import *
 
 # Import all boards for conversion
-# TODO add other boards and make this functionable
 from boards import *
 
 # The main window's class
@@ -30,6 +29,12 @@ class MainWindow(QtWidgets.QMainWindow):
     # Main window initialization function
     def __init__(self):
         super().__init__()
+        # Let's load all the boards
+        self._Inkplate10 = Inkplate10(self)
+        self._Inkplate6 = Inkplate6(self)
+        self._Inkplate6PLUS = Inkplate6PLUS(self)
+        self._Inkplate6MOTION = Inkplate6MOTION(self)
+        self.boards = [self._Inkplate10, self._Inkplate6, self._Inkplate6PLUS, self._Inkplate6MOTION]
         # Make 10 empty images for conversion
         # The user input won't be more than 10
         self.images = [ImageForConversion(num=i) for i in range(10)]
@@ -86,13 +91,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # Combo box for selecting the board
         self.selectBoard = self.header.findChild(QtWidgets.QComboBox, "boardSelect")
         self.selectBoard.setStyleSheet(comboBox) # Set style
-        # Disable the boards not yet implemented
-        # TODO this should be dynamic based on the list of boards
-        items_to_disable = ["Inkplate 10", "Inkplate 6", "Inkplate 5", "Inkplate 2"]
-        for index in range(self.selectBoard.count()):
-            item_text = self.selectBoard.itemText(index)
-            if item_text in items_to_disable:
-                self.selectBoard.model().item(index).setEnabled(False)
+        # Add items to the combo box
+        for board in self.boards:
+            self.selectBoard.addItem(board.name)
 
         # Image with steps how to use the program
         self.steps_path = "img/steps.png"
@@ -156,9 +157,6 @@ class MainWindow(QtWidgets.QMainWindow):
         # Colordepth combo box
         self.colorDepth_combo = self.window.findChild(QtWidgets.QComboBox, "colorDepth_combo")
         self.colorDepth_combo.setStyleSheet(comboBox)
-        # TODO enable only display modes available for each board
-        self.colorDepth_combo.model().item(1).setEnabled(False)
-        self.colorDepth_combo.currentIndexChanged.connect(self.change_color_depth)
 
         # Left arrow (previous image)
         self.left_arrow_path = "img/left_arrow.png"
@@ -263,7 +261,37 @@ class MainWindow(QtWidgets.QMainWindow):
     def next_screen(self):
         # Set this label's text so the user knows it's loading
         self.converting_label.setText("Processing...")
-        QApplication.processEvents()
+        # Let's also lock the board selection
+        self.selectBoard.setEnabled(False)
+        QApplication.processEvents() # Update GUI
+
+        # Let's lock in the board
+        selected_name = self.selectBoard.currentText()
+        self.selected_board = None  # Initialize to None in case no match is found
+        # Find the board where board.name matches the selected name
+        for board in self.boards:
+            if board.name == selected_name:
+                self.selected_board = board
+                break  # Exit the loop once the matching board is found
+
+        # Get the combo box model
+        model = self.colorDepth_combo.model()
+
+        # Loop through each item in the combo box
+        for i in range(self.colorDepth_combo.count()):
+            # Get the text of the current item
+            item_text = self.colorDepth_combo.itemText(i)
+
+            # Get the QStandardItem for the current item
+            item = model.item(i)
+
+            # Check if the item is in the selected board's conversion_modes
+            if item_text in self.selected_board.conversion_modes:
+                # Enable the item
+                item.setEnabled(True)
+            else:
+                # Disable the item
+                item.setEnabled(False)
 
         # Do initial processing of the images with default settings
         for image in self.images:
@@ -527,6 +555,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.num_images = 0  # There are no images loaded yet
         self.selected_image = 0  # The selected image will be the first image
         self.main_stack.setCurrentIndex(0)
+        self.selectBoard.setEnabled(True)
 
 # Script execution starts here
 if __name__ == "__main__":

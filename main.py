@@ -157,6 +157,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Colordepth combo box
         self.colorDepth_combo = self.window.findChild(QtWidgets.QComboBox, "colorDepth_combo")
         self.colorDepth_combo.setStyleSheet(comboBox)
+        self.colorDepth_combo.currentIndexChanged.connect(self.change_color_depth)
 
         # Left arrow (previous image)
         self.left_arrow_path = "img/left_arrow.png"
@@ -308,6 +309,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # This function loads each image into the editor part
     def load_image(self, index):
+        print("in load image")
         # First, set the label that we're loading
         self.converting_label.setText("Processing...")
         QApplication.processEvents() # Make sure it's updated

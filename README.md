@@ -14,18 +14,18 @@ The app is written in Python, the GUI is made in PySide6 (QT Designer).
 | Feature | Description                                |
 | ------- |--------------------------------------------|
 | **Image Formats** | .png, .jpg, .bmp                           |
-| **Conversion Types** | 1-bit (black and white), 4-bit (grayscale) |
+| **Conversion Types** | 1-bit (black and white), 3-bit and 4-bit (grayscale) |
 | **Editing Options** | Threshold, Dithering, Resize, Invert       |
 | **Export** | Individual or bulk export                  |
 | **Platforms** | Windows, Linux, Mac                        |
 
 ## Installation
 
-For each new release, we will provide builds for Windows, Linux, and Mac. Builds are coming soon!
+Simply download the build for your platform, extract and run. Builds are [here](https://github.com/SolderedElectronics/Soldered-Image-Converter/releases).
 
 ## Compatibility
 
-Currently, only images for Inkplate 6 MOTION are available for conversion. Additional boards will be added soon.
+Currently, only conversion for Inkplate 6 MOTION, Inkplate 10, 6, 6PLUS and FLICK is available. All our other boards will be supported soon.
 
 ## Credit
 

@@ -1,7 +1,7 @@
 # Soldered Image Converter
 
 ![Logo](img/logo.png)
-![Screenshopt](img/screenshot.png)
+![Screenshot](img/screenshot.png)
 
 ## Overview
 

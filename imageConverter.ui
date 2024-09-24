@@ -120,7 +120,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">font-size: 19px;
-    font-family: Arial, Helvetica, sans-serif; color: #ffffff; </string>
+     color: #ffffff; </string>
      </property>
      <property name="text">
       <string>Select board:</string>
@@ -137,7 +137,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">font-size: 19px;
-    font-family: Arial, Helvetica, sans-serif; color: #ffffff; </string>
+     color: #ffffff; </string>
      </property>
      <property name="text">
       <string>Processing...</string>
@@ -175,7 +175,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Soldered Image Converter is a simple tool used to generate Arduino-compatible C++ code for displaying images on displays from Soldered Electronics.</string>
@@ -198,7 +198,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string/>
@@ -227,7 +227,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string/>
@@ -293,7 +293,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Image name:</string>
@@ -310,7 +310,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Color depth:</string>
@@ -327,7 +327,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>B/W threshold:</string>
@@ -344,7 +344,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Dither kernel:</string>
@@ -427,7 +427,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Width:</string>
@@ -466,7 +466,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Height:</string>
@@ -546,7 +546,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>50</string>
@@ -566,7 +566,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Invert:</string>
@@ -583,7 +583,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Constrain proportions:</string>
@@ -600,7 +600,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Preview:</string>
@@ -642,7 +642,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;</string>
+    </string>
       </property>
       <property name="text">
        <string>Code:</string>
@@ -679,7 +679,7 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="styleSheet">
        <string notr="true">font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif; color:#5B2379;</string>
+     color:#5B2379;</string>
       </property>
       <property name="text">
        <string>1/5</string>

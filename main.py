@@ -4,7 +4,7 @@ import time
 
 # Import gui libraries and elements
 from PySide6 import QtWidgets, QtGui, QtCore
-from PySide6.QtGui import QDragEnterEvent, QDropEvent
+from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFontDatabase
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Qt
 from PySide6.QtWidgets import QLabel, QApplication, QFileDialog, QMessageBox
@@ -55,6 +55,26 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.window is None:
             print("Cannot load UI file")
             sys.exit(-1)
+
+        # Let's load fonts
+        # Attempt to load Source Sans Pro font from a file
+        font_id = QFontDatabase.addApplicationFont("source-sans-pro.ttf")
+        # Check if the font loaded successfully
+        if font_id != -1:
+            print("It's available")
+            # Fet the family name
+            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        else:
+            # If Source Sans Pro fails to load, fallback to sans-serif
+            font_family = "sans-serif"
+
+        # Set the application stylesheet with a fallback to sans-serif
+        app.setStyleSheet(f"""
+            * {{
+                font-family: '{font_family}', sans-serif;
+            }}
+        """)
+
         # Set the window title and icon
         self.window.setWindowTitle("Soldered Image Converter " + str(version))
         self.window.setWindowIcon(QtGui.QIcon('img/icon.ico'))
@@ -309,8 +329,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # This function loads each image into the editor part
     def load_image(self, index):
-        print("in load image")
-        # First, set the label that we're loading
+            # First, set the label that we're loading
         self.converting_label.setText("Processing...")
         QApplication.processEvents() # Make sure it's updated
 

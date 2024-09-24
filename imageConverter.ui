@@ -216,7 +216,7 @@
      <widget class="QLabel" name="dragDropInfo">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>66</x>
         <y>230</y>
         <width>1237</width>
         <height>315</height>

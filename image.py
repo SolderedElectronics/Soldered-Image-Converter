@@ -4,7 +4,6 @@ import re
 
 # Import Pillow
 from PIL import Image, ImageOps
-import numpy as np
 from dither import *
 
 # The class of the image being converted with all it's attributes
@@ -25,8 +24,8 @@ class ImageForConversion:
         self.invert = False
         self.resize = False
         self.constrain = False
-        self.ditherKernel = 0 # See dither function for what each of the values mean
-        self.resultString = "" # The resulting string
+        self.ditherKernel = 0 # See dither function for more details
+        self.resultString = "" # The resulting string of the .h file
 
     def getPath(self):
         return self.file_path

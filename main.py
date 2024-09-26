@@ -61,7 +61,6 @@ class MainWindow(QtWidgets.QMainWindow):
         font_id = QFontDatabase.addApplicationFont("source-sans-pro.ttf")
         # Check if the font loaded successfully
         if font_id != -1:
-            print("It's available")
             # Fet the family name
             font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
         else:

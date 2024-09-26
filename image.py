@@ -200,8 +200,16 @@ class ImageForConversion:
                         byte = (byte << 1)
                 byte_array.append(byte)
 
-        # Convert byte array to hex string
-        hex_array = ','.join(f'0x{byte:02X}' for byte in byte_array)
+        # Create a list of hex strings and insert newlines after every row
+        hex_array_lines = []
+        bytes_per_row = (width + 1) // 2  # Since 2 pixels are packed into one byte
+
+        for row in range(height):
+            row_data = byte_array[row * bytes_per_row:(row + 1) * bytes_per_row]
+            hex_array_lines.append(','.join(f'0x{byte:02X}' for byte in row_data))
+
+        # Join the rows with newlines
+        hex_array = ',\n'.join(hex_array_lines)
 
         # Generate the C-style array string
         result = (
@@ -239,8 +247,16 @@ class ImageForConversion:
                         byte = (byte << 4)
                 byte_array.append(byte)
 
-        # Convert byte array to hex string
-        hex_array = ','.join(f'0x{byte:02X}' for byte in byte_array)
+        # Create a list of hex strings and insert newlines after every row
+        hex_array_lines = []
+        bytes_per_row = (width + 1) // 2  # Since 2 pixels are packed into one byte
+
+        for row in range(height):
+            row_data = byte_array[row * bytes_per_row:(row + 1) * bytes_per_row]
+            hex_array_lines.append(','.join(f'0x{byte:02X}' for byte in row_data))
+
+        # Join the rows with newlines
+        hex_array = ',\n'.join(hex_array_lines)
 
         # Generate the C-style array string
         result = (
@@ -283,8 +299,16 @@ class ImageForConversion:
                         # Unused bits (bit 4 and bit 0) remain as is (zero)
                 byte_array.append(byte)
 
-        # Convert byte array to hex string
-        hex_array = ','.join(f'0x{byte:02X}' for byte in byte_array)
+        # Create a list of hex strings and insert newlines after every row
+        hex_array_lines = []
+        bytes_per_row = (width + 1) // 2  # Since 2 pixels are packed into one byte
+
+        for row in range(height):
+            row_data = byte_array[row * bytes_per_row:(row + 1) * bytes_per_row]
+            hex_array_lines.append(','.join(f'0x{byte:02X}' for byte in row_data))
+
+        # Join the rows with newlines
+        hex_array = ',\n'.join(hex_array_lines)
 
         # Generate the C-style array string
         result = (

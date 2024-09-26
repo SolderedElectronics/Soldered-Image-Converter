@@ -1,7 +1,7 @@
 .venv/
 .idea/
 __pycache__/
-build.ps1
+build_win.ps1
 build
 dist
 main.spec
@@ -9,3 +9,4 @@ preview.png
 test.ttf
 Soldered Image Converter.exe.spec
 Soldered Image Converter.spec
+build_mac.sh

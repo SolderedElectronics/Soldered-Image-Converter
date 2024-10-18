@@ -4,7 +4,7 @@ import time
 
 # Import gui libraries and elements
 from PySide6 import QtWidgets, QtGui, QtCore
-from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFontDatabase
+from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFontDatabase, QFont
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Qt
 from PySide6.QtWidgets import QLabel, QApplication, QFileDialog, QMessageBox
@@ -56,22 +56,11 @@ class MainWindow(QtWidgets.QMainWindow):
             print("Cannot load UI file")
             sys.exit(-1)
 
-        # Let's load fonts
-        # Attempt to load Source Sans Pro font from a file
-        font_id = QFontDatabase.addApplicationFont("source-sans-pro.ttf")
-        # Check if the font loaded successfully
-        if font_id != -1:
-            # Fet the family name
-            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        else:
-            # If Source Sans Pro fails to load, fallback to sans-serif
-            font_family = "sans-serif"
-
-        # Set the application stylesheet with a fallback to sans-serif
-        app.setStyleSheet(f"""
-            * {{
-                font-family: '{font_family}', sans-serif;
-            }}
+        # Fix fonts
+        app.setStyleSheet("""
+        *{
+            font-family: "Source Sans Pro, Arial, Helvetica, Sans-Serif";
+        }
         """)
 
         # Set the window title and icon

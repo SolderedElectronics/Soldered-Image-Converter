@@ -7,54 +7,57 @@ comboBox = """
                 padding: 1px 18px 1px 3px;
                 min-width: 6em;
                 background-color: white;
+                max-height: 30px;  /* Set a max height for the combobox */
             }
-            
+
             QComboBox:editable {
                 background: white;
             }
-            
+
             QComboBox:!editable, QComboBox::drop-down:editable {
                 background: white;
             }
-            
+
             QComboBox:!editable:on, QComboBox::drop-down:editable:on {
                 background: white;
             }
-            
+
             QComboBox:on {
                 padding-top: 3px;
                 padding-left: 4px;
                 background: white;
             }
-            
+
             QComboBox::drop-down {
                 subcontrol-origin: padding;
                 subcontrol-position: top right;
                 width: 15px;
                 border-left-width: 0px;
                 border-left-color: transparent;
-                border-top-right-radius: 10px; /* Match the border radius of the combo box */
-                border-bottom-right-radius: 10px; /* Match the border radius of the combo box */
-                background: white; /* Make the drop-down button background white */
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                background: white;
                 background-color: white;
+                max-height: 30px;  /* Set a max height for the drop-down */
             }
-            
+
             QComboBox::down-arrow {
-                image: url("img/down_arrow.png"); /* Use a custom arrow image */
+                image: url("img/down_arrow.png");
                 width: 16px;
                 height: 16px;
-                padding-right:15px;
+                padding-right: 5px;  /* Reduced padding to prevent vertical expansion */
             }
-            
+
             QComboBox QAbstractItemView {
-                background: white; /* Set the background of the dropdown list to white */
+                background: white;
                 border: 1px solid gray;
-                selection-background-color: lightgray; /* Background color of selected item */
+                selection-background-color: lightgray;
+                max-height: 150px;  /* Set a max height for the dropdown list */
             }
-            
+
             QComboBox::item {
-                padding: 5px; /* Increase the space between items */
-                background: white; /* Ensure each item has a white background */
+                padding: 5px;
+                background: white;
             }
             """
 

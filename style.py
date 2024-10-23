@@ -1,64 +1,44 @@
 # GUI elements' CSS styles
 
 comboBox = """
-            QComboBox {
-                border: 1px solid gray;
-                border-radius: 10px;
-                padding: 1px 18px 1px 3px;
-                min-width: 6em;
-                background-color: white;
-                max-height: 30px;  /* Set a max height for the combobox */
-            }
+QComboBox {
+  background: #FFFFFF;
+  padding: 2px 18px 2px 3px;
+  selection-background-color: #D0D0D0;
+  selection-color: #000000;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
 
-            QComboBox:editable {
-                background: white;
-            }
+QComboBox:editable {
+  background: #FFFFFF;
+}
 
-            QComboBox:!editable, QComboBox::drop-down:editable {
-                background: white;
-            }
+QComboBox:!editable,
+QComboBox::drop-down:editable,
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+  background: #FFFFFF;
+}
 
-            QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-                background: white;
-            }
+QComboBox::drop-down {
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  border-left: none;
+  width: 20px; /* Adjust the width if needed */
+  image: url("img/down_arrow.png");
+}
 
-            QComboBox:on {
-                padding-top: 3px;
-                padding-left: 4px;
-                background: white;
-            }
+QComboBox::down-arrow {
+  image: url("img/down_arrow.png");
+  width: 12px; /* Adjust the arrow size if needed */
+  height: 12px;
+}
 
-            QComboBox::drop-down {
-                subcontrol-origin: padding;
-                subcontrol-position: top right;
-                width: 15px;
-                border-left-width: 0px;
-                border-left-color: transparent;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                background: white;
-                background-color: white;
-                max-height: 30px;  /* Set a max height for the drop-down */
-            }
-
-            QComboBox::down-arrow {
-                image: url("img/down_arrow.png");
-                width: 16px;
-                height: 16px;
-                padding-right: 5px;  /* Reduced padding to prevent vertical expansion */
-            }
-
-            QComboBox QAbstractItemView {
-                background: white;
-                border: 1px solid gray;
-                selection-background-color: lightgray;
-                max-height: 150px;  /* Set a max height for the dropdown list */
-            }
-
-            QComboBox::item {
-                padding: 5px;
-                background: white;
-            }
+QComboBox QAbstractItemView {
+  background: #FFFFFF;
+  border: none;
+}
             """
 
 lineEdit = """

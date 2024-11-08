@@ -568,5 +568,10 @@ class MainWindow(QtWidgets.QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main_window = MainWindow()
-    sys.exit(app.exec())
+
+    try:
+        sys.exit(app.exec())
+    except Exception as e:
+        print("An error occurred:", e)
+        input("Press Enter to close...")  # Keeps the terminal open
 

@@ -47,7 +47,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def init_ui(self):
         # First, load the QtDesigner file as the GUI
         loader = QUiLoader()
+        print("path is here:")
+        print(get_path())
+        print("ui file is here:")
         ui_file = QFile(get_path()+"/imageConverter.ui")
+        print(get_path()+"/imageConverter.ui")
         if not ui_file.open(QFile.ReadOnly):
             print("Cannot open UI file")
             sys.exit(-1)

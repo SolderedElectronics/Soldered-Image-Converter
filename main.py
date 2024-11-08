@@ -11,6 +11,7 @@ from PySide6.QtWidgets import QLabel, QApplication, QFileDialog, QMessageBox
 from droplabel import DropLabel
 import clipboard
 
+from get_path import get_path
 # Import custom .css for styling the GUI
 from style import *
 
@@ -46,7 +47,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def init_ui(self):
         # First, load the QtDesigner file as the GUI
         loader = QUiLoader()
-        ui_file = QFile("imageConverter.ui")
+        ui_file = QFile(get_path()+"/imageConverter.ui")
         if not ui_file.open(QFile.ReadOnly):
             print("Cannot open UI file")
             sys.exit(-1)
@@ -63,9 +64,12 @@ class MainWindow(QtWidgets.QMainWindow):
         }
         """)
 
+        # Get the absolute path
+        self.absolute_path = get_path()
+
         # Set the window title and icon
         self.window.setWindowTitle("Soldered Image Converter " + str(version))
-        self.window.setWindowIcon(QtGui.QIcon('img/icon.ico'))
+        self.window.setWindowIcon(QtGui.QIcon(self.absolute_path+'/img/icon.ico'))
 
         # Now, get the UI elements so they can be used in code
         # Also, for some set the stylesheet and/or map them to functions
@@ -89,7 +93,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Add the logo in the header
         self.header = self.window.findChild(QtWidgets.QWidget, "header")
-        self.logo_path = "img/logo.png"
+        self.logo_path = self.absolute_path+"/img/logo.png"
         self.logo_pixmap = QtGui.QPixmap(self.logo_path)
         # This is an 'unresolved reference' but is actually OK
         self.mainLogo_label = self.header.findChild(QtWidgets.QLabel, "mainLogo")
@@ -104,7 +108,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.selectBoard.addItem(board.name)
 
         # Image with steps how to use the program
-        self.steps_path = "img/steps.png"
+        self.steps_path = self.absolute_path+"/img/steps.png"
         self.steps_pixmap = QtGui.QPixmap(self.steps_path)
         self.steps = self.window.findChild(QtWidgets.QLabel, "steps")
         self.steps.setPixmap(self.steps_pixmap)
@@ -112,7 +116,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # The place where to drop off the file to
         self.dragdrop = DropLabel(self, self.main_stack.widget(0))
         self.dragdrop.setGeometry(70, 240, 1237, 315)
-        self.dragdrop_pixmap = QtGui.QPixmap("img/dragdrop.png")
+        self.dragdrop_pixmap = QtGui.QPixmap(self.absolute_path+"/img/dragdrop.png")
         self.dragdrop.setPixmap(self.dragdrop_pixmap)
 
         # These are elements of page two, which will be shown after the user uploads photos
@@ -168,13 +172,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.colorDepth_combo.currentIndexChanged.connect(self.change_color_depth)
 
         # Left arrow (previous image)
-        self.left_arrow_path = "img/left_arrow.png"
+        self.left_arrow_path = self.absolute_path+"/img/left_arrow.png"
         self.left_arrow_pixmap = QtGui.QPixmap(self.left_arrow_path)
         self.left_arrow = self.window.findChild(QtWidgets.QPushButton, "left_button")
         self.left_arrow.clicked.connect(self.prev_image)
 
         # Right arrow (next image)
-        self.right_arrow_path = "img/right_arrow.png"
+        self.right_arrow_path = self.absolute_path+"/img/right_arrow.png"
         self.right_arrow_pixmap = QtGui.QPixmap(self.right_arrow_path)
         self.right_arrow = self.window.findChild(QtWidgets.QPushButton, "right_button")
         self.right_arrow.clicked.connect(self.next_image)
@@ -235,11 +239,6 @@ class MainWindow(QtWidgets.QMainWindow):
                     # Also count them
                     self.num_images +=1
 
-                    # Print the images array to verify
-                for img in self.images:
-                    if img.file_path != "":
-                        print(f"Path: {img.file_path}, Format: {img.file_format}")
-
                 # Go to the next screen
                 self.next_screen()
 
@@ -256,11 +255,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.images[i].file_format = file_format
             # Also count them
             self.num_images += 1
-
-            # Print the images array to verify
-        for img in self.images:
-            if img.file_path != "":
-                print(f"Path: {img.file_path}, Format: {img.file_format}")
 
         # Go to the next screen
         self.next_screen()
@@ -383,7 +377,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.resulting_code.setPlainText(image.resultString)
 
         # Update the preview image
-        preview_path = "preview.png"
+        preview_path = self.absolute_path+"/preview.png"
         preview_pixmap = QtGui.QPixmap(preview_path)
         preview_pixmap = preview_pixmap.scaled(self.previewIMG.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.previewIMG.setPixmap(preview_pixmap)

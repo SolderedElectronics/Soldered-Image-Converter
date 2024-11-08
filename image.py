@@ -5,6 +5,8 @@ import re
 # Import Pillow
 from PIL import Image, ImageOps
 from dither import *
+from get_path import get_path
+
 
 # The class of the image being converted with all it's attributes
 class ImageForConversion:
@@ -26,6 +28,9 @@ class ImageForConversion:
         self.constrain = False
         self.ditherKernel = 0 # See dither function for more details
         self.resultString = "" # The resulting string of the .h file
+        # Get the absolute path and declare the 'working file'
+        self.absolute_path = get_path()
+        self.preview_img_path = self.absolute_path+"/preview.png"
 
     def getPath(self):
         return self.file_path
@@ -43,6 +48,9 @@ class ImageForConversion:
 
         # Cut the file name at 30 characters and remove spaces or special characters
         file_name = re.sub(r'[^a-zA-Z0-9]', '_', file_name[:30])
+
+        # Remove leading numbers from the file name
+        file_name = re.sub(r'^\d+', '', file_name)
 
         # Update processed_image_name with the cleaned file name
         self.processed_image_name = file_name
@@ -103,15 +111,15 @@ class ImageForConversion:
                         img = img.point(lambda p: 255 if p > threshold else 0, '1')  # Apply threshold
                     else:
                         # Dithering
-                        img.save("preview.png")  # Save to file
-                        img_dither_input = cv2.imread("preview.png", 0)
+                        img.save(self.preview_img_path)  # Save to file
+                        img_dither_input = cv2.imread(self.preview_img_path, 0)
                         dither_module = ditherModule()
                         img_dither_output = dither_module.dither(img_dither_input, method=self.ditherKernel,
                                                                  resize=False)
-                        cv2.imwrite("preview.png", img_dither_output)
-                        img = Image.open("preview.png")  # Re-open the image
+                        cv2.imwrite(self.preview_img_path, img_dither_output)
+                        img = Image.open(self.preview_img_path)  # Re-open the image
                         # TODO why does treshold 0 give the desired result here?
-                        threshold = 0  # Map threshold from 0 to 100 to 0 to 255
+                        threshold = 0
                         img = img.point(lambda p: 255 if p > threshold else 0, '1')  # Apply threshold
 
                 # 3 bit processing
@@ -122,13 +130,13 @@ class ImageForConversion:
                         img = self.convert_to_3bit_grayscale(img)
                     else:
                         # dithering
-                        img.save("preview.png")  # Save to file
-                        img_dither_input = cv2.imread("preview.png", 0)
+                        img.save(self.preview_img_path)  # Save to file
+                        img_dither_input = cv2.imread(self.preview_img_path, 0)
                         dither_module = ditherModule3bit()
                         img_dither_output = dither_module.dither(img_dither_input, 3,
                                                                  resize=False)
-                        cv2.imwrite("preview.png", img_dither_output)
-                        img = Image.open("preview.png")  # Re-open the image
+                        cv2.imwrite(self.preview_img_path, img_dither_output)
+                        img = Image.open(self.preview_img_path)  # Re-open the image
                         img = img.convert("L")
 
                 # 4 bit processing
@@ -139,20 +147,20 @@ class ImageForConversion:
                         img = self.convert_to_4bit_grayscale(img)
                     else:
                         # dithering
-                        img.save("preview.png")  # Save to file
-                        img_dither_input = cv2.imread("preview.png", 0)
+                        img.save(self.preview_img_path)  # Save to file
+                        img_dither_input = cv2.imread(self.preview_img_path, 0)
                         dither_module = ditherModule4bit()
                         img_dither_output = dither_module.dither(img_dither_input, 3,
                                                                  resize=False)
-                        cv2.imwrite("preview.png", img_dither_output)
-                        img = Image.open("preview.png")  # Re-open the image
+                        cv2.imwrite(self.preview_img_path, img_dither_output)
+                        img = Image.open(self.preview_img_path)  # Re-open the image
                         img = img.convert("L")
                 # If invert is on, invert the image
                 if self.invert:
                     img = ImageOps.invert(img.convert("RGB")).convert(img.mode)
 
                 # Save or process the image further as needed
-                img.save("preview.png")
+                img.save(self.preview_img_path)
                 # Convert it to code also!
                 # Depending on the different mode the conversion mode is different
                 if self.conversion_mode == 0:

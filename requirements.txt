@@ -8,3 +8,5 @@ PySide6_Addons==6.7.2
 PySide6_Essentials==6.7.2
 shiboken6==6.7.2
 clipboard==0.0.4
+pyinstaller==6.10.0
+pyinstaller-hooks-contrib==2024.8

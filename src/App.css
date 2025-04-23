@@ -1,0 +1,172 @@
+/* Basic Reset / Font */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+    /* White background for the page */
+}
+
+.App {
+    text-align: center;
+}
+
+/* Header Styles */
+.App-header {
+    background-color: #5B2379;
+    /* Purple */
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Pushes logo and selector apart */
+    color: white;
+}
+
+.App-logo {
+    height: 60px;
+    /* Adjust as needed */
+    pointer-events: none;
+}
+
+.Board-selector {
+    display: flex;
+    align-items: center;
+}
+
+.Board-selector label {
+    margin-right: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.Board-selector select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 180px;
+    /* Give it some width */
+}
+
+/* Main Content Area */
+.App-main {
+    padding: 30px;
+    max-width: 900px;
+    /* Limit width for better readability */
+    margin: 0 auto;
+    /* Center the main content */
+}
+
+.Intro-text {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.Steps-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+    display: block;
+    /* Helps with margin auto centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Dropzone Area */
+.Dropzone {
+    background-color: #f0f0f0;
+    /* Light grey background */
+    border: 3px dashed #cccccc;
+    /* Dashed grey border */
+    border-radius: 15px;
+    /* Rounded corners */
+    padding: 40px 20px;
+    margin: 20px auto;
+    /* Centering */
+    max-width: 600px;
+    /* Limit width */
+    color: #555;
+}
+
+.Dropzone h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.File-info {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.Dropzone-icon {
+    max-width: 80px;
+    /* Adjust size */
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.Or-divider {
+    margin: 20px 0;
+    font-weight: bold;
+    color: #888;
+}
+
+.Browse-button {
+    background-color: #23B9D6;
+    /* Blue */
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 25px;
+    /* Pill shape */
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.Browse-button:hover {
+    background-color: #1fa8c4;
+    /* Slightly darker blue on hover */
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 600px) {
+    .App-header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .App-logo {
+        margin-bottom: 15px;
+    }
+
+    .Board-selector {
+        width: 100%;
+        justify-content: center;
+        /* Center selector on small screens */
+    }
+
+    .Board-selector select {
+        flex-grow: 1;
+        /* Allow select to take more space */
+    }
+
+    .App-main {
+        padding: 15px;
+    }
+
+    .Dropzone {
+        padding: 25px 15px;
+    }
+}

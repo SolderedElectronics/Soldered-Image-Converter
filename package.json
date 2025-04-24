@@ -1,7 +1,7 @@
 {
   "name": "soldered-image-converter",
   "version": "1.0.0",
-  "description": "![Logo](img/logo.png) ![Screenshopt](img/screenshot.png)",
+  "description": "Test",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -29,6 +29,7 @@
     "@babel/preset-react": "^7.26.3",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.3",
     "style-loader": "^4.0.0",
     "webpack": "^5.99.6",
